@@ -74,8 +74,8 @@ list<bool> parser(char input)
 {
     list<bool> result;
     uint8_t binval = segments.at(input); // look up in table what the binary value linked to letter is 
-    int counter = 8; //counter is 8 cos 8 bits
-    while (counter > 0)
+    int counter = 7; //counter is 8 cos 8 bits
+    while (counter >= 0)
     {
       if(binval & (1 << counter)) //checks if the bit in slot x is 1 or 0 
       {
@@ -119,23 +119,11 @@ void lightdisplay(list<bool> values)
 
 int main()
 {
-char ch1 = 'h';
-char ch2 = 'a';
-char ch3 = 'r';
-char ch4 = 'r';
-char ch5 = 'y';
 
-
-
-
-  
-  
-
-  printf("Hello World!\n");
-  
+lightdisplay(parser('A'));
  while (true)
  {
-  light = 0;
+  
   
  }  
 }
