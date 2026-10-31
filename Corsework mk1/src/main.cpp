@@ -117,10 +117,36 @@ void lightdisplay(list<bool> values)
 
 }
 
+// goes through and clears all the lights
+void lightClear()
+{
+  int i = 0;
+  while (i < 8)
+  {
+    leds[i] = 0; 
+    i++;
+
+  }
+  
+}
+
 int main()
 {
 
+
+lightdisplay(parser('H'));
+thread_sleep_for(1000);
+lightClear();
 lightdisplay(parser('A'));
+thread_sleep_for(1000);
+lightClear();
+lightdisplay(parser('R'));
+thread_sleep_for(1000);
+lightClear();
+lightdisplay(parser('R'));
+thread_sleep_for(1000);
+lightClear();
+lightdisplay(parser('Y'));
  while (true)
  {
   
