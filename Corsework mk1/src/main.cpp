@@ -1,6 +1,7 @@
 #include "mbed.h"
-int main()
-{
+#include <unordered_map>
+#include <list>
+
 /*
 hash table to link Characters to their LEDs
 eg A = 35
@@ -8,7 +9,9 @@ LED combination stored as 8 bit integer
 A = 1, B = 2, C = 4, D = 8, E = 16, F = 32, G = 64, DP = 128
 so this shows that to show the character A on the display you need lights F B A to be turned on 
 */
-std::unordered_map<char, uint8_t> segments = {
+
+
+unordered_map<char, uint8_t> segments = {
     {'A', 0b00100011}, // a,b,f
     {'B', 0b01101100}, // c,d,f,g
     {'C', 0b01100001}, // a,f,g
@@ -47,6 +50,39 @@ std::unordered_map<char, uint8_t> segments = {
     {'9', 0b01101111}, // a,b,c,d,f,g
     {' ', 0b00000000}  // blank (padding)
 };
+
+/*
+takes input character that we want to display 
+outputs a list of true/false coresponding to if the dp light should be on
+... all the way to light A
+*/
+list<bool> parser(char input)
+{
+    list<bool> result;
+    uint8_t binval = segments.at(input);
+    int counter = 8;
+    while (counter > 0)
+    {
+      if(binval & (1 << counter))
+      {
+        result.push_back(true);
+
+      }
+      else
+      {
+        result.push_back(false);
+      }
+      
+      
+    }
+    
+    return result;
+}
+
+int main()
+{
+
+
 
 
 
