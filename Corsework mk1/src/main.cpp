@@ -129,24 +129,31 @@ void lightClear()
   }
   
 }
+void combination(char inp)
+{
+  lightdisplay(parser(inp));
+  thread_sleep_for(1000);
+  lightClear();
+
+}
 
 int main()
 {
+  // should add validation for caps (A,a)
+  combination('H');
+  combination('A');
+  combination('R');
+  combination('R');
+  combination('Y');
+  combination(' ');
+  combination('D');
+  combination('U');
+  combination('F');
+  combination('F');
+  combination('9');
 
 
-lightdisplay(parser('H'));
-thread_sleep_for(1000);
-lightClear();
-lightdisplay(parser('A'));
-thread_sleep_for(1000);
-lightClear();
-lightdisplay(parser('R'));
-thread_sleep_for(1000);
-lightClear();
-lightdisplay(parser('R'));
-thread_sleep_for(1000);
-lightClear();
-lightdisplay(parser('Y'));
+
  while (true)
  {
   
