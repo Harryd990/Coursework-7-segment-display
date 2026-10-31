@@ -80,7 +80,7 @@ list<bool> parser(char input)
       {
         result.push_back(false); // if bit is 0 (else) then add false to list 
       }
-      
+      counter--;
       
     }
     
