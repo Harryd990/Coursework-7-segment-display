@@ -59,18 +59,18 @@ outputs a list of true/false coresponding to if the dp light should be on
 list<bool> parser(char input)
 {
     list<bool> result;
-    uint8_t binval = segments.at(input);
-    int counter = 8;
+    uint8_t binval = segments.at(input); // look up in table what the binary value linked to letter is 
+    int counter = 8; //counter is 8 cos 8 bits
     while (counter > 0)
     {
-      if(binval & (1 << counter))
+      if(binval & (1 << counter)) //checks if the bit in slot x is 1 or 0 
       {
-        result.push_back(true);
+        result.push_back(true); if 1 add true to list 
 
       }
       else
       {
-        result.push_back(false);
+        result.push_back(false); // if bit is 0 (else) then add false to list 
       }
       
       
@@ -79,9 +79,25 @@ list<bool> parser(char input)
     return result;
 }
 
-int main()
+/*
+should take the list outputted by parser and turn on the lights from t/f values 
+starts from dp (if index 0 is true)
+goes whole way till index 7 (if a is true)
+then should turn on chorisponding light 
+*/
+void lightdisplay(list<bool>)
 {
 
+
+}
+
+int main()
+{
+char ch1 = 'h';
+char ch2 = 'a';
+char ch3 = 'r';
+char ch4 = 'r';
+char ch5 = 'y';
 
 
 
