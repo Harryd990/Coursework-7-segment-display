@@ -9,6 +9,14 @@ LED combination stored as 8 bit integer
 A = 1, B = 2, C = 4, D = 8, E = 16, F = 32, G = 64, DP = 128
 so this shows that to show the character A on the display you need lights F B A to be turned on 
 */
+DigitalOut A(D0);
+DigitalOut B(D1);
+DigitalOut C(D2);
+DigitalOut D(D3);
+DigitalOut E(D4);
+DigitalOut F(D5);
+DigitalOut G(D6);
+DigitalOut DP(D7);
 
 
 unordered_map<char, uint8_t> segments = {
@@ -65,7 +73,7 @@ list<bool> parser(char input)
     {
       if(binval & (1 << counter)) //checks if the bit in slot x is 1 or 0 
       {
-        result.push_back(true); if 1 add true to list 
+        result.push_back(true); //if 1 add true to list 
 
       }
       else
@@ -102,7 +110,7 @@ char ch5 = 'y';
 
 
 
-  DigitalOut light(D7);
+  
   
 
   printf("Hello World!\n");
