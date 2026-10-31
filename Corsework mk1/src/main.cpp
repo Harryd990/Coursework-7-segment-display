@@ -18,6 +18,12 @@ DigitalOut F(D5);
 DigitalOut G(D6);
 DigitalOut DP(D7);
 
+// array of lights so i can reference just the number (7) and it will turn on d7
+DigitalOut leds[8] = {
+    DigitalOut(D0), DigitalOut(D1), DigitalOut(D2), DigitalOut(D3),
+    DigitalOut(D4), DigitalOut(D5), DigitalOut(D6), DigitalOut(D7)
+};
+
 
 unordered_map<char, uint8_t> segments = {
     {'A', 0b00100011}, // a,b,f
@@ -93,8 +99,20 @@ starts from dp (if index 0 is true)
 goes whole way till index 7 (if a is true)
 then should turn on chorisponding light 
 */
-void lightdisplay(list<bool>)
+void lightdisplay(list<bool> values)
 {
+  int counter = 0;
+  while (counter < 8)
+  {
+    if(*next(values.begin(), counter)) // check t/f at counters index
+    {
+      int lightnumb = (7-counter); // flip the counter value (as the decimal point is first item in list but is the last D (d7)
+      leds[lightnumb] = 1; //turn on the light at that index
+
+    }
+    counter++;
+    
+  }
 
 
 }
