@@ -28,6 +28,10 @@ DigitalOut E(D4);
 DigitalOut F(D5);
 DigitalOut G(D6);
 DigitalOut DP(D7);
+DigitalIn button1(D8);
+DigitalIn button2(D9);
+
+
 
 // array of lights so i can reference just the number (7) and it will turn on d7
 DigitalOut leds[8] = {
@@ -172,9 +176,19 @@ int main()
   // should add validation for caps (A,a)
   string word1 = "harry";
   string word2 = "duff5";
-  combination(word1);
-  combination(word2);
+  //combination(word1);
+  //combination(word2);
 
+  if (button1 == 1)
+  {
+    combination(word1);
+  }
+  /*
+  else if (button2 == 1)
+  {
+    combination(word2);
+  }
+    */
 
  while (true)
  {
