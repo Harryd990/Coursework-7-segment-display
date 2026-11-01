@@ -1,6 +1,17 @@
 #include "mbed.h"
 #include <unordered_map>
 #include <list>
+/*
+what to talk about in write up:
+indexing issues 
+why i chose list 
+hash table 
+need to clear leds after each one is diplayed 
+why chose binary store
+*/
+
+
+
 
 /*
 hash table to link Characters to their LEDs
@@ -65,6 +76,7 @@ unordered_map<char, uint8_t> segments = {
     {' ', 0b00000000}  // blank (padding)
 };
 
+
 /*
 takes input character that we want to display 
 outputs a list of true/false coresponding to if the dp light should be on
@@ -72,6 +84,10 @@ outputs a list of true/false coresponding to if the dp light should be on
 */
 list<bool> parser(char input)
 {
+  // this part converts our string into each individual character of the string
+
+
+
     list<bool> result;
     uint8_t binval = segments.at(input); // look up in table what the binary value linked to letter is 
     int counter = 7; //counter is 8 cos 8 bits
@@ -129,34 +145,41 @@ void lightClear()
   }
   
 }
-void combination(char inp)
+void combination(string input)
 {
-  lightdisplay(parser(inp));
-  thread_sleep_for(1000);
-  lightClear();
+  int stringLen = input.size();
+    int counter = 0;
+  while (counter < stringLen)
+  {
+    
+    char currentChr = toupper(input[counter]); // sets the character in the string at counter (this is the one we work on) and capitalises it
+
+
+    lightdisplay(parser(currentChr));// call all the funcs on eachother 
+    thread_sleep_for(1000);// wait a sec so light can be seen
+    lightClear(); // resert all leds to 0 (off) so the next letter can be displaed
+    counter++;
+    
+  }
+
+
+  
 
 }
 
 int main()
 {
   // should add validation for caps (A,a)
-  combination('H');
-  combination('A');
-  combination('R');
-  combination('R');
-  combination('Y');
-  combination(' ');
-  combination('D');
-  combination('U');
-  combination('F');
-  combination('F');
-  combination('9');
-
+  string word1 = "harry";
+  string word2 = "duff5";
+  combination(word1);
+  combination(word2);
 
 
  while (true)
  {
   
+
   
  }  
 }
