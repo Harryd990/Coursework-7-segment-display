@@ -30,6 +30,7 @@ DigitalOut G(D6);
 DigitalOut DP(D7);
 DigitalIn button1(D8);
 DigitalIn button2(D9);
+DigitalIn button3(D10);
 
 
 
@@ -77,9 +78,32 @@ unordered_map<char, uint8_t> segments = {
     {'7', 0b00000111}, // a,b,c
     {'8', 0b01111111}, // a,b,c,d,e,f,g
     {'9', 0b01101111}, // a,b,c,d,f,g
-    {' ', 0b00000000}  // blank (padding)
+    {' ', 0b00000000}  // blank
 };
 
+/*
+will be called when button is pressed 
+records how long button was held for 
+if button is held for 0 -> 0.2 secconds = dot
+if button helf for 0.2 -> 1 secconds = dash 
+if no button was pressed for 1 seccond calculate what character was inputted 
+
+returns a string 
+after button is pressed 
+new list of bools is made (dot = false dash = true)
+record inputs for that character 
+gap happens 
+character is displayed on the display 
+character is added to a string 
+
+repetes untill button is held for 2+ secconds to show that all the characters is enetered 
+after all characters are entered word is displayed 
+*/
+
+string morsecoder ()
+{
+
+}
 
 /*
 takes input character that we want to display 
@@ -94,7 +118,7 @@ list<bool> parser(char input)
 
     list<bool> result;
     uint8_t binval = segments.at(input); // look up in table what the binary value linked to letter is 
-    int counter = 7; //counter is 8 cos 8 bits
+    int counter = 7; //counter is 7 cos 8 bits with 0 indexing 
     while (counter >= 0)
     {
       if(binval & (1 << counter)) //checks if the bit in slot x is 1 or 0 
@@ -171,15 +195,16 @@ void combination(string input)
 
 }
 
+
 int main()
 {
-  // should add validation for caps (A,a)
+  
   string word1 = "harry";
   string word2 = "duff5";
   //combination(word1);
   //combination(word2);
 
-  if (button1 == 1)
+  if (button1 == true)
   {
     combination(word1);
   }
