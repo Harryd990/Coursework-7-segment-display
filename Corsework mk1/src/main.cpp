@@ -12,7 +12,7 @@ why chose binary store
 
 /*
 add basic code to header file 
-
+add interupt so if other buttom is pressed it starts displaying that instead
 */
 
 
