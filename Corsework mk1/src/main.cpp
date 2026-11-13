@@ -10,7 +10,10 @@ need to clear leds after each one is diplayed
 why chose binary store
 */
 
+/*
+add basic code to header file 
 
+*/
 
 
 /*
@@ -28,9 +31,9 @@ DigitalOut E(D4);
 DigitalOut F(D5);
 DigitalOut G(D6);
 DigitalOut DP(D7);
-DigitalIn button1(D8);
-DigitalIn button2(D9);
-DigitalIn button3(D10);
+DigitalIn button1(D8, PullUp);
+DigitalIn button2(D9, PullUp);
+DigitalIn button3(D10, PullUp);
 
 
 
@@ -82,7 +85,8 @@ unordered_map<char, uint8_t> segments = {
 };
 
 /*
-will be called when button is pressed 
+will be called when button 3 is pressed calling the morse coder function 
+
 records how long button was held for 
 if button is held for 0 -> 0.2 secconds = dot
 if button helf for 0.2 -> 1 secconds = dash 
@@ -100,10 +104,12 @@ repetes untill button is held for 2+ secconds to show that all the characters is
 after all characters are entered word is displayed 
 */
 
+/*
 string morsecoder ()
 {
-
+ 
 }
+*/
 
 /*
 takes input character that we want to display 
@@ -201,24 +207,26 @@ int main()
   
   string word1 = "harry";
   string word2 = "duff5";
-  //combination(word1);
-  //combination(word2);
 
-  if (button1 == true)
-  {
-    combination(word1);
-  }
   /*
-  else if (button2 == 1)
-  {
-    combination(word2);
-  }
-    */
+  combination(word1);
+  combination(word2);
+  */
+  
+
+  
 
  while (true)
  {
-  
 
+  if (button1 == 0)
+  {
+    combination(word1);
+  }
+  else if (button2 == 0)
+  {
+    combination(word2);
+  }
   
  }  
 }
